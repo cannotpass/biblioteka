@@ -1,0 +1,12 @@
+DODAJ
+Hobbit
+10
+POZYCZ
+Hobbit
+2
+DODAJ
+Hobbit
+5
+WYPISZ
+HISTORIA
+KONIEC

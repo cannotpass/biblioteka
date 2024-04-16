@@ -12,12 +12,8 @@ Program biblioteczny:
 # 7. KONIEC    Zakonczenie dzialania programu
 """
 
-slownik_ksiazek = {
-    "Harry Potter: Kamien Filozoficzny": 1,
-    "Wladca Pierscieni: Powrot Krola": 10,
-    "Hobbit": 12,
-    "Ulysses": 0,
-}
+slownik_ksiazek = {}
+historia = []
 
 LISTA_KOMEND = ['DODAJ', 'POZYCZ', 'WYPISZ', 'SPRAWDZ', 'UNIKALNE', 'LICZBA', 'KONIEC']
 
@@ -38,6 +34,7 @@ while True:
             slownik_ksiazek[tytul] -= liczba_sztuk
         else:
             print(f">> Niewystarczajaca liczba sztuk ksiazki.")
+        historia.append([akcja, tytul, liczba_sztuk])
     elif akcja == 'DODAJ':
         tytul = input("> Podaj tytul ksiazki: ")
         liczba_sztuk = int(input("> Podaj liczbe sztuk: "))
@@ -48,6 +45,7 @@ while True:
         if tytul not in slownik_ksiazek:
             slownik_ksiazek[tytul] = 0
         slownik_ksiazek[tytul] += liczba_sztuk
+        historia.append([akcja, tytul, liczba_sztuk])
     elif akcja == 'WYPISZ':
         print("Lista dostepnych ksiazek:")
         for tytul, liczba_sztuk in slownik_ksiazek.items():
@@ -67,5 +65,7 @@ while True:
         for sztuk in slownik_ksiazek.values():
             liczba_ksiazek += sztuk
         print(f"> Calkowita liczba woluminow w bibliotece: {liczba_ksiazek}")
+    elif akcja == 'HISTORIA':
+        print("\nHistoria: ", historia)
     else:
         print(f"Nieznana komenda: {akcja}")

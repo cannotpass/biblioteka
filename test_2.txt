@@ -1,0 +1,8 @@
+DODAJ
+Ulyssess
+5
+DODAJ
+Hobbit
+10
+WYPISZ
+KONIEC
