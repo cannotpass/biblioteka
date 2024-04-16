@@ -9,7 +9,7 @@ Program biblioteczny:
 # 4. SPRAWDZ   Sprawdzenie czy dana ksiazka jest na stanie
 # 5. UNIKALNE  Wypisanie liczby unikalnych tytulow w bibliotece
 # 6. LICZBA    Wypisanie sumy liczb woluminow w bibliotece
-7. KONIEC    Zakonczenie dzialania programu
+# 7. KONIEC    Zakonczenie dzialania programu
 """
 
 slownik_ksiazek = {
@@ -27,6 +27,16 @@ while True:
     if akcja == 'KONIEC':
         print('Koncze dzialanie programu...')
         break
+    elif akcja == 'DODAJ':
+        tytul = input("> Podaj tytul ksiazki: ")
+        liczba_sztuk = int(input("> Podaj liczbe sztuk: "))
+        if liczba_sztuk < 0:
+            print(">> Liczba sztuk dodawanej ksiazki musi byc wieksza lub rowna 0.")
+            continue
+        print(f">> Dodaje '{tytul}' w liczbie {liczba_sztuk}")
+        if tytul not in slownik_ksiazek:
+            slownik_ksiazek[tytul] = 0
+        slownik_ksiazek[tytul] += liczba_sztuk
     elif akcja == 'WYPISZ':
         print("Lista dostepnych ksiazek:")
         for tytul, liczba_sztuk in slownik_ksiazek.items():
