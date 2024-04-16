@@ -3,8 +3,8 @@ Program biblioteczny:
 
 # Nie interesują nas autorzy, tylko tytuly.
 
-1. DODAJ     Dodanie ksiazek
-2. POZYCZ    Wyjecie ksiazek (wypozyczenie)
+# 1. DODAJ     Dodanie ksiazek
+# 2. POZYCZ    Wyjecie ksiazek (wypozyczenie)
 # 3. WYPISZ    Wypisanie listy ksiazek z liczba sztuk
 # 4. SPRAWDZ   Sprawdzenie czy dana ksiazka jest na stanie
 # 5. UNIKALNE  Wypisanie liczby unikalnych tytulow w bibliotece
@@ -27,6 +27,17 @@ while True:
     if akcja == 'KONIEC':
         print('Koncze dzialanie programu...')
         break
+    elif akcja == 'POZYCZ':
+        tytul = input("> Podaj tytul ksiazki: ")
+        liczba_sztuk = int(input("> Podaj liczbe sztuk: "))
+        if liczba_sztuk <= 0:
+            print(">> Liczba sztuk pozyczanej ksiazki musi byc wieksza 0.")
+            continue
+        if tytul in slownik_ksiazek and slownik_ksiazek[tytul] >= liczba_sztuk:
+            print(f">> Pozyczam {liczba_sztuk} sztuk '{tytul}'.")
+            slownik_ksiazek[tytul] -= liczba_sztuk
+        else:
+            print(f">> Niewystarczajaca liczba sztuk ksiazki.")
     elif akcja == 'DODAJ':
         tytul = input("> Podaj tytul ksiazki: ")
         liczba_sztuk = int(input("> Podaj liczbe sztuk: "))
