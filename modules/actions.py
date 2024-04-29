@@ -50,4 +50,17 @@ def liczba(slownik_ksiazek):
 
 
 def wypisz_historie(historia):
-    print("\nHistoria: ", historia)
+    print("\nHistoria: ")
+    for wpis in historia:
+        print(wpis)
+
+
+if __name__ == "__main__":
+    # Test funkcji
+    test_historia = [
+        ["DODAJ", "Hobbit", 10],
+        ["POZYCZ", "Hobbit", 2],
+        ["DODAJ", "Python Zaawansowany", 5],
+    ]
+
+    wypisz_historie(test_historia)

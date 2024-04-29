@@ -28,38 +28,43 @@ from modules.actions import (
     wypisz_historie,
 )
 
-slownik_ksiazek = wczytaj_biblioteke()
-historia = wczytaj_historie()
+def main():
+    slownik_ksiazek = wczytaj_biblioteke()
+    historia = wczytaj_historie()
 
-LISTA_KOMEND = ['DODAJ', 'POZYCZ', 'WYPISZ', 'SPRAWDZ', 'UNIKALNE', 'LICZBA', 'KONIEC']
+    LISTA_KOMEND = ['DODAJ', 'POZYCZ', 'WYPISZ', 'SPRAWDZ', 'UNIKALNE', 'LICZBA', 'KONIEC']
 
-while True:
-    print(f"Wybierz komende z listy: {LISTA_KOMEND}")
-    akcja = input("Podaj komende: ")
-    if akcja == 'KONIEC':
-        print('Koncze dzialanie programu...')
-        break
-    elif akcja == 'POZYCZ':
-        tytul = input("> Podaj tytul ksiazki: ")
-        liczba_sztuk = int(input("> Podaj liczbe sztuk: "))
-        slownik_ksiazek, historia = pozycz(slownik_ksiazek, historia, liczba_sztuk, tytul)
-    elif akcja == 'DODAJ':
-        tytul = input("> Podaj tytul ksiazki: ")
-        liczba_sztuk = int(input("> Podaj liczbe sztuk: "))
-        slownik_ksiazek, historia = dodaj(slownik_ksiazek, historia, liczba_sztuk, tytul)
-    elif akcja == 'WYPISZ':
-        wypisz(slownik_ksiazek)
-    elif akcja == 'SPRAWDZ':
-        nazwa_ksiazki = input('Podaj nazwe ksiazki do sprawdzenia: ')
-        sprawdz(slownik_ksiazek, nazwa_ksiazki)
-    elif akcja == 'UNIKALNE':
-        unikalne(slownik_ksiazek)
-    elif akcja == 'LICZBA':
-        liczba(slownik_ksiazek)
-    elif akcja == 'HISTORIA':
-        wypisz_historie(historia)
-    else:
-        print(f"Nieznana komenda: {akcja}")
+    while True:
+        print(f"Wybierz komende z listy: {LISTA_KOMEND}")
+        akcja = input("Podaj komende: ")
+        if akcja == 'KONIEC':
+            print('Koncze dzialanie programu...')
+            break
+        elif akcja == 'POZYCZ':
+            tytul = input("> Podaj tytul ksiazki: ")
+            liczba_sztuk = int(input("> Podaj liczbe sztuk: "))
+            slownik_ksiazek, historia = pozycz(slownik_ksiazek, historia, liczba_sztuk, tytul)
+        elif akcja == 'DODAJ':
+            tytul = input("> Podaj tytul ksiazki: ")
+            liczba_sztuk = int(input("> Podaj liczbe sztuk: "))
+            slownik_ksiazek, historia = dodaj(slownik_ksiazek, historia, liczba_sztuk, tytul)
+        elif akcja == 'WYPISZ':
+            wypisz(slownik_ksiazek)
+        elif akcja == 'SPRAWDZ':
+            nazwa_ksiazki = input('Podaj nazwe ksiazki do sprawdzenia: ')
+            sprawdz(slownik_ksiazek, nazwa_ksiazki)
+        elif akcja == 'UNIKALNE':
+            unikalne(slownik_ksiazek)
+        elif akcja == 'LICZBA':
+            liczba(slownik_ksiazek)
+        elif akcja == 'HISTORIA':
+            wypisz_historie(historia)
+        else:
+            print(f"Nieznana komenda: {akcja}")
 
-zapisz_historie(historia)
-zapisz_biblioteke(slownik_ksiazek)
+    zapisz_historie(historia)
+    zapisz_biblioteke(slownik_ksiazek)
+
+
+if __name__ == "__main__":
+    main()
