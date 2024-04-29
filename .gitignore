@@ -5,3 +5,5 @@ versions.py
 
 historia.txt
 library.txt
+
+__pycache__
