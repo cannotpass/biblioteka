@@ -55,6 +55,19 @@ def wypisz_historie(historia):
         print(wpis)
 
 
+def wypisz_wybrana_historie(historia, od, do):
+    if do < od:
+        print("OD musi byc wieksze od DO.")
+    elif od >= len(historia):
+        print(f"OD musi byc mniejsze niz dlugos listy: {len(historia)}.")
+    elif od < 0 or do < 0:
+        print("OD i DO nie moga byc ujemne.")
+    else:
+        print(f"Fragment historii od {od} do {do}:")
+        for wpis in historia[od:do+1]:
+            print(wpis)
+
+
 if __name__ == "__main__":
     # Test funkcji
     test_historia = [
@@ -62,5 +75,13 @@ if __name__ == "__main__":
         ["POZYCZ", "Hobbit", 2],
         ["DODAJ", "Python Zaawansowany", 5],
     ]
-
     wypisz_historie(test_historia)
+
+    # Test dodawania ksiazki
+    test_slownik = {}
+    test_historia = []
+    oczekiwany_wynik = {'Python': 2}
+    oczekiwana_historia = [['DODAJ', 'Python', 2]]
+    test_slownik, test_historia = dodaj(test_slownik, test_historia, 2, "Python")
+    assert test_slownik == oczekiwany_wynik, f"Blad dodawnia do biblioteki, oczekiwano {oczekiwany_wynik}, otrzymano {test_slownik}."
+    assert test_historia == oczekiwana_historia, f"Blad historii, oczekiwano: {oczekiwana_historia}, otrzymano {test_historia}"

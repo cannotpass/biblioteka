@@ -3,13 +3,14 @@ Program biblioteczny:
 
 # Nie interesują nas autorzy, tylko tytuly.
 
-# 1. DODAJ     Dodanie ksiazek
-# 2. POZYCZ    Wyjecie ksiazek (wypozyczenie)
-# 3. WYPISZ    Wypisanie listy ksiazek z liczba sztuk
-# 4. SPRAWDZ   Sprawdzenie czy dana ksiazka jest na stanie
-# 5. UNIKALNE  Wypisanie liczby unikalnych tytulow w bibliotece
-# 6. LICZBA    Wypisanie sumy liczb woluminow w bibliotece
-# 7. KONIEC    Zakonczenie dzialania programu
+# 1. DODAJ              Dodanie ksiazek
+# 2. POZYCZ             Wyjecie ksiazek (wypozyczenie)
+# 3. WYPISZ             Wypisanie listy ksiazek z liczba sztuk
+# 4. SPRAWDZ            Sprawdzenie czy dana ksiazka jest na stanie
+# 5. UNIKALNE           Wypisanie liczby unikalnych tytulow w bibliotece
+# 6. LICZBA             Wypisanie sumy liczb woluminow w bibliotece
+# 7. WYBRANA HISTORIA   Wypisuje historie od indeksu X do indeksu Y
+# 8. KONIEC             Zakonczenie dzialania programu
 """
 from modules.io import (
     wczytaj_historie,
@@ -26,13 +27,17 @@ from modules.actions import (
     unikalne,
     liczba,
     wypisz_historie,
+    wypisz_wybrana_historie,
 )
 
 def main():
     slownik_ksiazek = wczytaj_biblioteke()
     historia = wczytaj_historie()
 
-    LISTA_KOMEND = ['DODAJ', 'POZYCZ', 'WYPISZ', 'SPRAWDZ', 'UNIKALNE', 'LICZBA', 'KONIEC']
+    LISTA_KOMEND = [
+        'DODAJ', 'POZYCZ', 'WYPISZ', 'SPRAWDZ', 'UNIKALNE',
+        'LICZBA', 'HISTORIA', 'WYBRANA HISTORIA', 'KONIEC',
+    ]
 
     while True:
         print(f"Wybierz komende z listy: {LISTA_KOMEND}")
@@ -59,6 +64,12 @@ def main():
             liczba(slownik_ksiazek)
         elif akcja == 'HISTORIA':
             wypisz_historie(historia)
+        elif akcja == 'WYBRANA HISTORIA':
+            od = input("Podaj indeks startu: ")
+            do = input("Podaj indeks konca: ")
+            if not od or not do:
+                print("OD i DO nie moga byc puste.")
+            wypisz_wybrana_historie(historia, int(od), int(do))
         else:
             print(f"Nieznana komenda: {akcja}")
 
