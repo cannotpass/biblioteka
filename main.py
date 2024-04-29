@@ -22,10 +22,6 @@ from modules.io import (
 slownik_ksiazek = wczytaj_biblioteke()
 historia = wczytaj_historie()
 
-print("TEST:")
-print("Biblioteka:", slownik_ksiazek)
-# print("Historia:", historia)
-
 LISTA_KOMEND = ['DODAJ', 'POZYCZ', 'WYPISZ', 'SPRAWDZ', 'UNIKALNE', 'LICZBA', 'KONIEC']
 
 while True:
